@@ -39,13 +39,9 @@
 
             echo '주문해주셔서 감사합니다';
             $sql = "INSERT INTO `order`(order_time, customer_id, menu_name, size) VALUES('$order_time', '$id', '$menu', '$size')";
-            echo $sql;
-            if($mysqli->query($sql)){  
-                echo '주문성공';
-            }
-            else{
-                echo '실패!';
-            }
+            if($mysqli->query($sql)){
+                
+            }  
         }
         else{
             echo '죄송합니다. 해당 메뉴 재료의 남은 재고가 없습니다.';
