@@ -7,7 +7,7 @@
  <head>
     <meta charset="utf-8">
     <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
-    <title>order16</title>
+    <title>order</title>
  </head> 
 <body>
     <?php 
@@ -35,24 +35,19 @@
         //$result = mysqli_query();
 
 
-        if($row['quantity'] != 0){
-            //$sql1 = "insert into loginInfo (id, pwd, isEmployee)";          
+        if($row['quantity'] != 0){     
+            $sql = "UPDATE inventory SET quantity = quantity-1 WHERE ingredient = \"{$row['ingredient']}\"";         
+            $mysqli->query($sql));
 
-            $sql = "UPDATE inventory SET quantity = quantity-1 WHERE ingredient = '"'{$row['ingredient']}'"'";
-            echo $sql;          
-            $mysqli->query($sql);
-            //echo '주문해주셔서 감사합니다';
-            //$sql = "INSERT INTO `order` ($order_time, $id, $menu, $size)";
-            echo $row['ingredient'];
-            //<input type="button" value="뒤로가기"onclick="javascript:history.go(-1)">;
+            echo '주문해주셔서 감사합니다';
+            $sql = "INSERT INTO `order` ($order_time, $id, $menu, $size)";    
         }
         else{
             echo '죄송합니다. 해당 메뉴 재료의 남은 재고가 없습니다.';
         }        
-
-        //mysqli_close($mysqli);
         mysqli_close($conn);
     ?> 
+    <input type="button" value="뒤로가기"onclick="javascript:history.go(-1)">;
 </body>
 </html>
 
