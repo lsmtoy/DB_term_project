@@ -1,7 +1,7 @@
 <?php
-setcookie('id');
 session_cache_limiter("private_no_expire");
 session_start();
+setcookie('id');
 ?>
 <!DOCTYPE html>
 <html>

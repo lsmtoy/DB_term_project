@@ -37,15 +37,24 @@
 
         if($row['quantity'] != 0){     
             $sql = "UPDATE inventory SET quantity = quantity-1 WHERE ingredient = \"{$row['ingredient']}\"";         
-            $mysqli->query($sql));
+            $mysqli->query($sql);
 
             echo '주문해주셔서 감사합니다';
-            $sql = "INSERT INTO `order` ($order_time, $id, $menu, $size)";    
+            $sql = "INSERT INTO `order`(order_time, customer_id, menu_name, size) VALUES('$order_time', '$id', '$menu', '$size')";
+            echo $sql;
+            if($mysqli->query($sql)){  
+                echo $order_time;
+                echo $id;
+                echo $menu;
+                echo $size;
+            }
+            else{
+                echo '실패!';
+            }
         }
         else{
             echo '죄송합니다. 해당 메뉴 재료의 남은 재고가 없습니다.';
         }        
-        mysqli_close($conn);
     ?> 
     <input type="button" value="뒤로가기"onclick="javascript:history.go(-1)">;
 </body>

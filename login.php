@@ -30,7 +30,7 @@
     $row = $res->fetch_array(MYSQLI_ASSOC); // 넘어온 결과를 한 행씩 패치해서 $row라는 배열에 담는다.
  
         if ($row != null) {
-            setcookie('id', $memberId, time()+3600, '/');
+            setcookie('id', $memberId);
             if($row['isEmployee'] == FALSE){                                                 
                 $_SESSION['ses_username'] = $row['id'];                           // 일반 로그인 
                 echo $_COOKIE['id'].'님 안녕하세요<p/><br/>';              
@@ -41,7 +41,7 @@
             else{
                 $_SESSION['ses_username'] = $row['id'];                           // 관리자 로그인 
                 echo $_COOKIE['id'].'님 안녕하세요. 관리자모드로 로그인되었습니다.<p/><br/>';              
-                echo '<a href="./menu_info.php">메뉴 보러가기</a><br/>';
+                echo '<a href="./menu.php">메뉴 보러가기</a><br/>';
                 echo '<a href="./customer_info.php">고객정보 확인하기</a><br/>';
                 echo '<a href="./index.php">로그아웃 하기</a>';
             }
