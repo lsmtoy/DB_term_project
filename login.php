@@ -33,14 +33,14 @@
             setcookie('id', $memberId);
             if($row['isEmployee'] == FALSE){                                                 
                 $_SESSION['ses_username'] = $row['id'];                           // 일반 로그인 
-                echo $_COOKIE['id'].'님 안녕하세요<p/><br/>';              
+                echo $_SESSION['ses_username'].'님 안녕하세요<p/><br/>';              
                 echo '<a href="./menu.php">메뉴 보러가기</a><br/>';
                 echo '<a href="./order_check.php">주문 확인하기</a><br/>';
                 echo '<a href="./index.php">로그아웃 하기</a>';
             }           //로그아웃 페이지 링크.
             else{
                 $_SESSION['ses_username'] = $row['id'];                           // 관리자 로그인 
-                echo $_COOKIE['id'].'님 안녕하세요. 관리자모드로 로그인되었습니다.<p/><br/>';              
+                echo $_SESSION['ses_username'].'님 안녕하세요. 관리자모드로 로그인되었습니다.<p/><br/>';              
                 echo '<a href="./menu.php">메뉴 보러가기</a><br/>';
                 echo '<a href="./customer_info.php">고객정보 확인하기</a><br/>';
                 echo '<a href="./index.php">로그아웃 하기</a>';

@@ -6,12 +6,10 @@
 <html>
  <head>
     <meta charset="utf-8">
-    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
     <title>order</title>
  </head> 
 <body>
     <?php 
- 
         $id = $_COOKIE['id'];
         $menu = $_POST['menu'];
         $size = $_POST['size'];
@@ -43,10 +41,7 @@
             $sql = "INSERT INTO `order`(order_time, customer_id, menu_name, size) VALUES('$order_time', '$id', '$menu', '$size')";
             echo $sql;
             if($mysqli->query($sql)){  
-                echo $order_time;
-                echo $id;
-                echo $menu;
-                echo $size;
+                echo '주문성공';
             }
             else{
                 echo '실패!';
