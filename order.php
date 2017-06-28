@@ -7,7 +7,7 @@
  <head>
     <meta charset="utf-8">
     <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
-    <title>order5</title>
+    <title>order16</title>
  </head> 
 <body>
     <?php 
@@ -17,15 +17,15 @@
         $size = $_POST['size'];
         $order_time = date("Y-m-d H:i:s", time()); 
 
-        //$host = 'localhost'; 
-        //$user = 'root';
-        //$pw = 'lsmtoy123';
-        //$dbName = 'db_project';
+        $host = 'localhost'; 
+        $user = 'root';
+        $pw = 'lsmtoy123';
+        $dbName = 'db_project';
         //
         //$conn = mysqli_connect($host, $user, $pw, $dbname);
         //$result = mysqli_query($conn, "SELECT * FROM inventory NATURAL JOIN menu WHERE menu_name = '$menu'");
         //$row = mysqli_fetch_array($result);
-        //$mysqli = new mysqli($host, $user, $pw, $dbName); //mysql로 접근 하도록 설정
+        $mysqli = new mysqli($host, $user, $pw, $dbName); //mysql로 접근 하도록 설정
 
                
 
@@ -34,8 +34,16 @@
         $row = $res->fetch_array(MYSQLI_ASSOC);
         //$result = mysqli_query();
 
+
         if($row['quantity'] != 0){
-            echo '주문해주셔서 감사합니다.';
+            //$sql1 = "insert into loginInfo (id, pwd, isEmployee)";          
+
+            $sql = "UPDATE inventory SET quantity = quantity-1 WHERE ingredient = '"'{$row['ingredient']}'"'";
+            echo $sql;          
+            $mysqli->query($sql);
+            //echo '주문해주셔서 감사합니다';
+            //$sql = "INSERT INTO `order` ($order_time, $id, $menu, $size)";
+            echo $row['ingredient'];
             //<input type="button" value="뒤로가기"onclick="javascript:history.go(-1)">;
         }
         else{
